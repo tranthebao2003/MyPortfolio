@@ -746,7 +746,7 @@ rộng của màn hình nhỏ hơn hoặc bằng giá trị xác định.
 
 /* kích thước của điện thoại width thường nhỏ hơn 740px còn taplet thì nhỏ hơn 1024px */
 /* điện thoại */
-@media (max-width: 768px){ 
+@media (max-width: 1400px){ 
     html{
         font-size: 50%;
     }

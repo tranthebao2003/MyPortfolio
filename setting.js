@@ -86,7 +86,7 @@ closeGallery.addEventListener('click', function(){
 // khi user click vào esc ta sẽ bắt event keyboard, nút esc trên bàn phím là 27 (dựa vào mã ascii)
 // và khi keyCode == 27 thì ta tắt gallery
 document.addEventListener('keydown', function(e){
-    if(e.keyCode == 27){
+    if(e.key == 'Escape'){
         gallery.classList.remove('show-gallery')
         gallery__inner.innerHTML = ''
     }
@@ -109,7 +109,6 @@ function showAndHideBtn(){
 prev.addEventListener('click', function(){
     if(currentIndex > 0){
         currentIndex--
-        console.log(currentIndex)
         if(imgAndVideo[currentIndex].tagName === 'IMG'){ 
             showImage(currentIndex)
         }
@@ -123,7 +122,6 @@ prev.addEventListener('click', function(){
 next.addEventListener('click', function(){
     if(currentIndex < imgAndVideo.length - 1){
         currentIndex++
-        console.log(currentIndex)
         if(imgAndVideo[currentIndex].tagName === 'IMG'){ 
             showImage(currentIndex)
         }
