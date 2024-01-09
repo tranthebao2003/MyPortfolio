@@ -1,0 +1,995 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none; /* là phần nằm ngoài border */
+    scroll-behavior: smooth; /* tạo độ mượt khi ng dùng nhấp vào link phần nào đó nó trượt xuống sẽ mượt hơn */
+    /* xác định font poppins, nếu ko đc sẽ chuyển san font sans-serif hoặc font mặc định hệ thống */
+    font-family: 'Poppins', sans-serif;
+}
+
+:root{
+    --bg-color: #081b29;
+    --second-bg-color: #112e42;
+    --text-color-light: #ededed;
+    --text-color-black: #071118;
+    --boder: #153d58;
+    --boder2: #1b6773;
+    --main-color: #00abf0;
+    --xanhNgoc: #4aebfa;
+
+    --heading1: 5.6rem;
+    --heading2: 3.2rem;
+    --heading3: 2.5rem;
+    --text: 1.8rem;
+
+    /* mobile */
+
+    --heading1-mobile: 4rem;
+    --heading2-mobile: 2.6rem;
+    --heading3-mobile: 1.8rem;
+    --text-mobile: 1.6rem;
+}
+
+html{
+    font-size: 62.5%; /*bởi vì font mặc định của html là 16px
+    nên ta sử dụng font-size 62.5% * 16px = 10px. Mục đích
+    là để về sau ta sẽ sử dụng đơn vị rem để tính toán đơn giản hơn
+    vì lúc này nó tham chiếu đến phần tử gốc cụ thể là html 1rem sẽ tương ứng 
+    với kích thước mặc định đã thay thổi của html là 10px (1em = 10px)*/
+    overflow-x: hidden;
+}
+
+body{
+    background: var(--bg-color);
+    color: var(--text-color-light);
+}
+
+p{
+    font-family: 'Roboto', sans-serif;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem 9%;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /*căn giữa theo chìu dọc */
+    z-index: 100; /*giống layer z-index càng lớn thì nó càng ở trên so vs layer khác*/
+
+    /* mục đích transition này là để khi thêm class sticky bằng jvs nó sẽ mượt */
+    transition: 0.5s ease-in-out;
+}
+
+.header.sticky{ /* select thẻ có cả 2 class này */
+    background: var(--second-bg-color);
+}
+
+.logo{
+    position: relative;
+    font-size: var(--heading2);
+    color: var(--main-color);
+    font-weight: 700;
+    transition: 0.4s ease-in-out
+}
+
+.logo:hover{
+    color: #35bdf3;
+    transform: scale(1.1);
+}
+
+.navbar a{ /* chọn all element a là con class navbar */
+    font-size: 2rem;
+    color: var(--text-color-light);
+    font-weight: 500;
+    margin-left: 3.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+/*khi hover vào thẻ a là con của class navbar or là thẻ a (con của class navbar) có class active thì sẽ áp dụng màu chữ này */
+.navbar a:hover,
+.navbar a.active{ /*chọn all ele a có class active trong class navbar*/
+    color: var(--main-color);
+}
+
+#menu-icon{
+    font-size: 3.6rem;
+    color: var(--main-color);
+    cursor: pointer;
+    display: none;
+    transition: 0.5s ease-in-out;
+}
+
+#menu-icon:hover{
+    color: #42bbeb;
+    transform: scale(1.1);
+}
+
+section{ /*select padding so vs nd bên trong nó*/
+    min-height: 100%;
+    padding: 5rem 8% 2rem; /*top 5rem, left-right: 8%, bottom: 20px */
+}
+
+.home{
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+}
+
+.home-image{
+    position: relative;
+    background: url(./imgAndVideo/daiDien.jpg) no-repeat;
+    background-size: cover; /* thay đổi kích thước tấm ảnh để phù hợp với thẻ div chứa nó và giữ nguyên tỉ lệ khung hình*/
+    width: 45rem;
+    height: 45rem;
+    border-radius: 50%;
+    margin-left: 16rem;
+    border: 0.5rem solid var(--xanhNgoc);
+    
+    animation: upAndDown 4s ease-in-out infinite 
+}
+
+/* upAndDown chia làm 3 giai đoạn 0 50% và 100% (phần % theo thời gian) */
+@keyframes upAndDown{
+   
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.home-image::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0px;
+    
+    width:100%;
+    height:100%;
+
+    border-radius: 50%;
+    background: var(--main-color);
+    transform: scale(0);
+    opacity: 0.15;
+    /* animation: tên keyframe tg thực hiện và chu kì(infinite: vô tận) */
+    animation: spreadRound 2s infinite ease-in-out
+}
+
+@keyframes spreadRound {
+    /* từ trạng thái mặc định cho đến to */
+    to{
+        transform: scale(100%);
+        opacity: 0;
+    }
+}
+
+.home-content{ 
+    max-width: 50%; /* 50% width section Home */
+}
+
+.home-content h1{
+    font-size: var(--heading1);
+    font-weight: 700;
+    line-height: 1.2; /* độ cao của dòng */
+}
+
+.home-content .text-animate{
+    position: relative; /* vị trí hiện tại của nó */
+    width: 33rem;
+}
+
+.home-content .text-animate h3{
+    font-size: var(--heading2);
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: var(--main-color) 0.6px; /* thuộc tính shortHand của
+    -webkit-text-stroke-color(màu viền) and -webkit-text-stroke-width(độ rộng của viền) để tạo viền cho chữ */
+
+    background-image: linear-gradient(90deg, var(--main-color), var(--main-color));
+    background-repeat: no-repeat;
+    background-clip: text; /* nên sẽ đc hiển thị trong vùng văn bản đây ko phải thuộc tính chuẩn css */
+    background-position: 0 0; /* vị trí x y của background */
+    /* khi x tăng từ âm lên 0 thì chữ sẽ đc fill từ trái qua phải tạo x = 0 thì chữ đc fill đầy*/
+    animation: motionText 6s linear infinite;
+    animation-delay: 2s;
+}
+
+@keyframes  motionText{
+   /* đầu tiên % là tỉ lệ thời gian
+   từ 0->20% thì chữ sẽ là stroke
+   từ 20% ->70% thì nó fill chữ
+   từ 65%%->85% nó vẫn giữ trạng thái fill 
+   chữ từ 85% ->100% nó 
+   sẽ trở lại trạng thái stroke 
+   những khoảng nào có 2 con số % mục đích là tạo độ deplay*/
+
+    0%,20%{
+        background-position: -33rem 0;
+    }
+
+    65%,85%{
+        background-position: 0rem 0;
+    }
+
+    100%{
+        background-position: -33rem 0;
+    }
+
+}
+
+@keyframes  motionCusorText{
+
+    /* tương tự như motionText thì ở đây sẽ có thêm thuộc tính opacity để làm chớp nháy 
+    vertical bar */
+    0%, 20%{
+        left: 0;
+    }
+
+    65%, 70%{
+       left: 330px;
+       opacity: 1;
+    }
+
+    80%{
+        left: 330px;
+        opacity: 0;
+    }
+
+    85%{
+        left: 330px;
+        opacity: 1;
+    }
+
+    100%{
+        left: 0;
+    }
+}
+
+.home-content .text-animate h3::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-left: 3px solid var(--main-color);
+    animation: motionCusorText 6s linear infinite;
+    animation-delay: 2s;
+    z-index: -1;
+}
+
+.home-content p{
+    font-size: var(--text);
+    font-weight: 400;
+    margin: 2rem 0 4rem;
+}
+
+.btn-box{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 35rem;
+    height: 5rem;
+}
+
+.btn-box .btn{
+    position: relative;
+    display: inline-flex; /* nó cũng là flex nhưng ko đc xuống dòng */
+    justify-content: center; /* khác vs space-between là có khoảng trống và cách đều, 
+    còn center thì nó căn giữa theo trục main axis và no space */
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-color-black);
+    width: 15rem;
+    height: 100%; /* chiếm 100% chiều cao của cha nó là btn-box */
+    border: var(--main-color) 0.3rem solid;
+    border-radius: 1rem;
+    letter-spacing: 0.2rem; /* khoảng cách của các kí tự */
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-box .btn::before{
+    content: '';
+    position: absolute; /* thiết lập vị trí dựa trên phần tử cha gần nhất
+    có position cụ thể ở đây là class btn nhưng width là của class btn*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--main-color);
+    z-index: -1;
+    transition: 0.5s ease-in-out;
+}
+
+/* chọn class btn là con đầu tiên của btn-box khi hover nào nó thì width của pseudo before sẽ có width = 0 */
+.btn-box .btn:nth-child(1):hover::before{
+    width: 0;
+}
+
+.btn-box .btn:nth-child(1):hover{
+    color: var(--main-color);
+    /* box-shadow: x-offset y-offset blur color */
+    box-shadow: 0 0 15px #48cbffd2;
+}
+
+.btn-box .btn:nth-child(2)::before{
+    width: 0;
+}
+
+.btn-box .btn:nth-child(2){
+    color: var(--main-color);
+}
+
+.btn-box .btn:nth-child(2):hover::before{
+    width: 100%;
+}
+
+.btn-box .btn:nth-child(2):hover{
+    color: var(--text-color-black);
+    box-shadow: 0 0 15px #48cbffd2;
+}
+
+.home-social{
+    position: absolute;
+    margin-top: 55rem;
+    width: 19.2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-social a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center; /* căn giữa những icon vào bên trong thẻ a theo chiều dọc */
+    align-items: center; /* căn giữa những icon vào bên trong thẻ a theo chiều ngang */
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    
+    background: transparent;
+    border: 0.2rem solid var(--main-color);
+    font-size: 2rem;
+    color: var(--main-color);
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.3s ease-in-out;
+}
+
+.home-social a::before{
+    content: '';
+    position: absolute;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: 0.5s ease-in-out;
+}
+
+.home-social a:hover::before{
+    background-color: var(--main-color);
+}
+
+.home-social a:hover{
+    color: var(--text-color-black);
+    box-shadow: 0 0 8px #48cbffd2;
+}
+
+.about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /*main - axis theo chiều dọc còn mặc định là chiều ngang */
+    gap: 2rem; /* set 1 khoảng cách giữa các dòng */
+    background: var(--second-bg-color);
+    padding-bottom: 6rem;
+}
+
+span{
+    color: var(--main-color);
+}
+
+.heading{
+    font-size: var(--heading1);
+    margin-bottom: 3rem;
+}
+
+.about-video{
+    position: relative;
+    /* cho cái div bao tag video to hơn kích thước video 1 xíu 
+    để thẻ span phía sao ăn theo class .about-video này */
+    width: calc(640px*1.03);
+    height: calc(360px*1.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-video video{
+    border-radius: 1rem;
+}
+
+.about-video .rectangle-spin{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-top: var(--main-color) solid 0.5rem;
+    border-right: var(--boder2) solid 0.5rem;
+    border-bottom: var(--main-color) solid 0.5rem;
+    border-left: var(--boder2) solid 0.5rem;
+    border-radius: 1rem;
+}
+
+.about-content{
+    text-align: center; /*chữ căn giữa*/
+}
+
+.about-content h3{
+    font-size: var(--heading3);
+    margin: 1rem 0;
+    color: var(--main-color);
+}
+
+.about-content p{
+    font-size: var(--text);
+}
+
+.btn-box.btns{ /* chọn thẻ nào có cả 2 class này */
+    margin-top: 4rem;
+    display: inline-block; /* kết hợp giữa inline và block: inline nó chỉ chiếm chiều rộng cần thiết cho phần nội dung
+    chứ ko chiếm toàn bộ chiều rộng như block, còn block thì cho phép thiết lập width height padding margin*/
+    width: 15rem;
+}
+
+.education{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: auto;
+    /* cho phép phần tử tự động xác định độ cao tối thiểu mà
+     nó cần để chứa nội dung*/
+    padding-bottom: 6rem;
+}
+
+.education-column .title{
+    font-size: var(--heading3);
+    color: var(--main-color);
+    margin-bottom: 2rem;
+}
+
+.education-column .education-box{
+    border-left: 0.2rem solid var(--main-color);
+    padding-left: 1rem;
+}
+
+.education-box .education-content{
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.education-box .education-content::before{
+    content: '';
+    position: absolute;
+    top: 0rem;
+    left: -2.1rem;
+    width: 2rem;
+    height: 2rem;
+    background: var(--main-color);
+    border-radius: 50%;
+
+}
+
+.education-content .content{
+    position: relative;
+    padding: 1.2rem;
+    border: 0.2rem solid var(--main-color);
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.education-content .content::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background: var(--second-bg-color);
+    z-index: -1;
+    transition: 0.5s ease-in-out;
+}
+
+.education-content .content:hover::before{
+    width: 100%;
+}
+
+.education-content .content .year{
+    font-size: var(--text);
+    color: var(--main-color);
+    font-weight: 500;
+    padding-bottom: 0.8rem;
+    transition: 0.3s ease-in-out
+}
+
+.education-content .content:hover .year{
+    color: var(--xanhNgoc);
+}
+
+.education-content .content .year i{ /* thẻ i là icon */
+padding-right: 0.5rem;
+}
+
+.education-content .content h3{
+    font-family: Roboto; /* phải thay font vì font poppins bị lỗi */
+    font-size: var(--heading3);
+}
+
+.education-content .content p{
+    font-size: var(--text);
+    padding-top: 0.5rem;
+}
+
+.products{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: auto;/*sau này thêm ảnh thì kích thước nó tự tăng */
+    background: var(--second-bg-color);
+    padding-bottom: 10rem;
+}
+
+.products-wrapper{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 120rem; /*(chiều dài của 4 tấm hình)*/
+    height: 20rem; /* chiều cao của 1 tấm */
+}
+
+.wrapper-image-video{
+    width: 22%;
+    border: 3px solid var(--xanhNgoc);
+    border-radius: 1rem;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.wrapper-image-video img{
+     /* width and height 100% object-position center nghĩa là
+    tấm ảnh sẽ ở trung tâm khung and object-fit cover nghĩa là nó sẽ
+    bao luôn cái khung đó và giữ nguyên tỉ lệ */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.wrapper-image-video video{
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   object-position: center;
+}
+
+.wrapper-image-video::before{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 102%;
+    border-radius: 1rem;
+    background: var(--main-color);
+    transition: 0.25s ease-in-out;
+    opacity: 0.3;
+    transform: scale(0.98);
+    z-index: 100; /*ban đầu phải để before này ở trên img,video để tạo hiệu ứng */
+}
+
+
+.wrapper-image-video:hover::before{
+    width: 22%; 
+    opacity: 0;
+    z-index: -1; /* nhưng khi hover vào thì phải bỏ nó ở dưới img,video để tránh ảnh hướng đến event onclick */
+}
+
+.gallery{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(17,46,66,0.8); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 2 attribute opacity:0 và pointer-events: none
+    để ban đầu gallery này sẽ ẩn đi và mọi event
+    trên gallery này đều vô dụng*/
+    opacity: 0;
+    pointer-events: none;
+
+    transform: scale(0.8); /*để phục vụ cho animation
+    khi ấn vào mik sẽ sale lên 1 */
+
+    transition: 0.5s ease-in-out;
+
+    z-index: 1000; /*để nó luôn là lớp cao nhất khi hiển thị */
+    
+}
+
+.gallery .gallery__inner{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+
+.gallery .gallery__inner .sizeImg{
+    /* width, height để phù hợp với tỉ lệ bức ảnh*/
+    width: calc(1024px / 1.1);
+    height: calc(820px / 1.1); 
+}
+
+.gallery .gallery__inner .sizeVideo{
+    /* width, height để phù hợp với tỉ lệ video*/
+    width: calc(1280px * 1.03);
+    height: calc(720px * 1.03); 
+}
+
+.close{
+    position: absolute;
+    top: -2px;
+    right: 0;
+    color: var(--main-color);
+    font-size: 3rem;
+}
+
+.control{
+    position: absolute;
+    color: var(--main-color);
+    font-size: 6rem;
+}
+
+.control.next{ /* chọn thẻ nào có cả 2 class này */
+    right: 0.8rem;
+}
+
+.control.prev{
+    left: 0.8rem;
+}
+
+.btn-hover{
+    transition: 0.3s ease-in-out;
+}
+.btn-hover:hover{
+    transform: scale(1.2);
+    color: #62c8f0;
+    cursor: pointer;
+}
+
+.show-gallery{
+    opacity: 1; /* hiện lên */
+    pointer-events: auto; /* tự động nhận sự kiện */
+    transform: scale(1);
+}
+
+.hide-btn-gallery{ /* class này để ẩn btn prev, next khi user đã ở đầu or cuối product */
+    display: none;
+    pointer-events: none;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* nếu chìu rộng của container ko đủ thì phần tử con sẽ chủ động wrap sag hàng mới */
+
+    padding: 1.5rem 8%;
+    background-color: var(--bg-color);
+}
+
+.footer-text{
+    font-size: var(--text);
+}
+
+.footer-iconTop a{
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--main-color);
+
+    transition: 0.5s ease-in-out;
+}
+
+.footer-iconTop a i { /* selector này chọn thẻ i con thẻ a và thẻ a con của class footer-iconTop */
+    color: var(--text-color-black);
+    font-size: var(--heading2);
+   
+}
+
+.footer-iconTop a:hover{
+    background: #62c9f1;
+    box-shadow: 0 0 10px #48cbffd2;
+    transform: scale(1.1);
+}
+
+/* reponsive */
+/*
+min-width: Được sử dụng để chỉ áp dụng CSS khi chiều rộng 
+của màn hình lớn hơn hoặc bằng giá trị xác định.
+
+max-width: Được sử dụng để chỉ áp dụng CSS khi chiều 
+rộng của màn hình nhỏ hơn hoặc bằng giá trị xác định. 
+*/
+
+/* kích thước của điện thoại width thường nhỏ hơn 740px còn taplet thì nhỏ hơn 1024px */
+/* điện thoại */
+@media (max-width: 768px){ 
+    html{
+        font-size: 50%;
+    }
+    
+   .header{
+    padding: 0.7rem 5%;
+    background-color: var(--bg-color);
+   }
+
+   #menu-icon{
+    display: block;
+   }
+
+   .navbar{
+        position: absolute;
+        top: 100%; /* ở vị trí cao nhất của thẻ cha header*/
+        left: -100%;
+        background-color: var(--bg-color);
+        opacity: 0;
+        width: 100%;
+        padding: 1rem 2%;
+        /* box-shadow: 0 0.5rem 1rem rgba(26, 25, 25, 0.2) : tạo bóng cho box
+        h-offset (horizontal-offset) v-offset (vertial-offset) blur color*/
+        box-shadow: 0 2px 5px rgba(52, 174, 250, 0.8);
+        transition: 0.5s ease-in-out;
+   }
+
+   .navbar.active::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.5;
+        width:1%;
+        height:100%;
+
+        background: var(--main-color);
+
+        /* animation này sẽ sử dụng key leftToRight kiểu ease-in-out trong vòng
+        1s 1 lần và sau khi xong nó sẽ dừng ở vị trí cuối luôn*/
+        animation: leftToRight ease-in-out 1s 1 forwards
+   }
+
+   @keyframes leftToRight {
+        to{
+            left: 100%;
+            opacity: 0;
+        }
+   }
+
+   .navbar.active{
+        left: 0;
+        opacity: 1;
+   }
+
+   .navbar a{
+        display: block;
+        font-size: 1.8rem;
+        margin: 1.5rem;
+        /* giới hạn width của thẻ a lại để tránh user để cách rất xa chữ
+        mà nó vẫn hover vào */
+        width: 10%; 
+   }
+
+   section{ 
+    /*select padding so vs nd bên trong nó*/
+        padding: 4rem 8% 1rem; /*top 4rem, left-right: 8%, bottom: 1rem */
+    }
+
+   /* section home */
+   .home{
+        display: flex;
+        flex-direction: column;
+        padding: 17rem 6%;
+        padding-top: 0;
+   }
+
+   .home-content{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10rem;
+        max-width: 100%
+   }
+
+   .home-content h1 {
+        font-size: var(--heading1);
+        font-weight: 700;
+        line-height: 1;
+    }
+  
+    .home-content .text-animate {
+        position: relative;
+        width: 350px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .home-content .text-animate h3{
+        font-size: var(--heading2);
+    }
+
+    @keyframes  motionText{
+        /* đầu tiên % là tỉ lệ thời gian
+        từ 0->20% thì chữ sẽ là stroke
+        từ 20% ->70% thì nó fill chữ
+        từ 65%%->85% nó vẫn giữ trạng thái fill 
+        chữ từ 85% ->100% nó 
+        sẽ trở lại trạng thái stroke 
+        những khoảng nào có 2 con số % mục đích là tạo độ deplay*/
+     
+         0%,20%{
+             background-position: -260px 0;
+         }
+     
+         65%,85%{
+             background-position: 0rem 0;
+         }
+     
+         100%{
+             background-position: -260px 0;
+         }
+     
+     }
+
+    @keyframes  motionCusorText{
+
+        /* tương tự như motionText thì ở đây tc sẽ có thuộc tính opacity để làm chớp nháy 
+        vertical bar */
+        0%, 20%{
+            left: 30px;
+        }
+    
+        65%, 70%{
+           left: 300px;
+           opacity: 1;
+        }
+    
+        80%{
+            left: 300px;
+            opacity: 0;
+        }
+    
+        85%{
+            left: 300px;
+            opacity: 1;
+        }
+    
+        100%{
+            left: 30px;
+        }
+    }
+
+    p{
+        line-height: 1.4;
+    }
+
+    .home-content p {
+        font-size: var(--text);
+        font-weight: 400;
+        margin: 2rem 0 4rem;
+    }
+
+    .btn-box {
+        width: 100%;
+    }
+
+    .home-image{
+        margin-top: 10rem;
+        margin-left: 0;
+    }
+
+    .home-social{
+        bottom: -12rem;
+        width: 30rem;
+    }
+
+    /* about me */
+    .about-video {
+        width: calc(384px*1.03);
+        height: calc(216px*1.05);
+    }
+
+    .about-video video {
+        width: 384px;
+        height: 216px;
+    }
+
+    .about-content p{
+        text-align: left;
+    }
+
+    /* products */
+    .products-wrapper {
+        flex-direction: column;
+        width: 50rem;
+        height: 120rem;
+    }
+
+    .wrapper-image-video {
+        height: 22%;
+        width: 80%;
+    }
+
+    .wrapper-image-video::before{
+        width:0%;
+        height: 22%;
+    }
+
+    .wrapper-image-video:hover::before{
+        width: 80%; 
+    }
+
+    .gallery .gallery__inner .sizeImg{
+        /* width, height để phù hợp với tỉ lệ bức ảnh khi gallery xuất hiện */
+        width: calc(1024px/2);
+        height: calc(820px/2);
+    }
+    
+    .gallery .gallery__inner .sizeVideo{
+        /* width, height để phù hợp với tỉ lệ video khi gallery xuất hiện*/
+        width: calc(1280px/2.6);
+        height: calc(720px/2.6);
+    }
+
+    .close {
+        top: 0;
+        right: 0;
+        font-size: 3.5rem;
+    }
+
+    .control {
+        font-size: 5rem;
+    }
+
+    .control.next{
+        top: 80%;
+        right: 0.2rem;
+    }
+    
+    .control.prev{
+        top: 80%;
+        left: 0.2rem;
+    }
+}

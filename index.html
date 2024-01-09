@@ -1,0 +1,189 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- box icon -->
+    <!-- để sử dụng icon trên web box icon -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- header Design -->
+    <!-- thẻ header giống thẻ div thông thường -->
+    <header class="header">
+        <a href="#home" class="logo">THE BAO</a>
+        <!-- class='bx bxs-home': class để sử dụng icon home 
+             class='bx bx-x-circle': class để dùng icon x-cicle
+        -->
+        <div class='bx bxs-home' id="menu-icon"></div>
+        
+    <!-- thẻ nav: thường dành bao bọc khối nhìu lệnh điều hướng -->
+        <nav class="navbar">
+            <!-- <a href="#home">Home</a> 
+            thì khi nhấp vào Home sẽ dẫn ta đến phần đó -->
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#products">Products</a>
+        </nav>
+    </header>
+
+    <!-- home selection degin -->
+    <!-- tag section để xác định các phần -->
+    <!-- thẻ span bọc những phần tử nhỏ còn thẻ div thì
+    bọc những ptu lớn và tạo layout -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1>Hello, I'm <span>The Bao</span></h1>
+            <div class="text-animate">
+                <h3>Software Engineer</h3>
+            </div>
+            <p>
+                Chào mọi người, tôi là Trần Thế Bảo một sinh viên năm ba tại học viện Công Nghệ Bưu Chính Viễn Thông.
+                Là một người đam mê sáng tạo và luôn tìm kiếm cơ hội để biểu hiện niềm đam mê đó.
+            </p>
+
+            <div class="btn-box">
+                <a href="./imgAndVideo/zalo.jpg" class="btn">My zalo</a>
+                <a href="tel:0377253857" class="btn">Call me</a>
+            </div>
+        </div>
+
+        <div class="home-image"></div>
+
+        <div class="home-social">
+            <a href="https://www.facebook.com/kybac.ba.5/"> <i class='bx bxl-facebook-circle'></i> </a>
+            <a href="mailto:nbkbvohoc@gmail.com"> <i class='bx bxl-gmail'></i> </a>
+            <a href="https://github.com/tranthebao2003"> <i class='bx bxl-github'></i> </a>
+        </div>
+    </section>
+
+    <!-- about section design -->
+
+    <section class="about" id="about">
+        <h2 class="heading">About <span>Me</span></h2>
+
+        <div class="about-video">
+            <!-- chome chỉ hỗ trợ autoplay muted -->
+            <video width="640" height="360" controls autoplay muted>
+                <source src="./imgAndVideo/aboutMe.mp4" type="video/mp4">
+            </video>
+            <span class="rectangle-spin"></span>
+        </div>
+    
+        <div class="about-content">
+            <h3>Software Engineer</h3>
+            <p>Tương lai của tôi được đặt ra với mục tiêu trở thành một lập trình viên có khả năng sử 
+                dụng code để giải quyết các vấn đề thực tế của khách hàng. Ngoài ra, sở thích lớn của 
+                tôi là chơi những tựa game "soulike" có độ khó cao
+                . Điều này không chỉ giúp tôi thư giãn mà còn thách thức tư duy và kỹ năng giải quyết vấn đề.
+            </p>
+
+            <div class="btn-box btns">
+                <!-- sau này có thể bỏ link cv ở đây -->
+                <a href="#home" class="btn">Read more</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education section design -->
+    <section class="education" id="education">
+        <h2 class="heading">My <span>Journey</span></h2>
+
+        <div class="education-column">
+            <h3 class="title">Education</h3>
+
+            <div class="education-box">
+                <!-- 2014 - 2018 -->
+                <div class="education-content">
+                    <div class="content">
+                        <div class="year"><i class='bx bx-calendar'></i>2014 - 2018</div>
+                        <h3>Học tại trung học cơ sở Nguyễn Bá Ngọc</h3>
+                        <p> Là thời gian tôi học cấp hai với 4 năm liền học sinh giỏi, cùng với
+                            đó là giải khuyến khích hóa cấp huyện.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2018 - 2021 -->
+                <div class="education-content">
+                    <div class="content">
+                        <div class="year"><i class='bx bx-calendar'></i>2018 - 2021</div>
+                        <h3>Học tại trung học phổ thông Thống Nhất A</h3>
+                        <p>Là ngôi trường mơ ước của tôi khi học cấp hai, tốt nghiệp cấp 3 với tấm 
+                            bằng giỏi với điểm thi đại học 26,5 điểm đã giúp tôi có được tấm vé vào đại học.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2021 - hiện nay -->
+                <div class="education-content">
+                    <div class="content">
+                        <div class="year"><i class='bx bx-calendar'></i>2021 - Nay</div>
+                        <h3>Học tại học viện Công Nghệ Bưu Chính Viễn Thông</h3>
+                        <p>Đây là nơi giúp tôi rèn luyện những kĩ năng cần thiết để có thể 
+                            tìm kiếm được một công việc như ý. Hiện tại tôi đang học ngành
+                            công nghệ đa phương tiện chuyên ngành phát triển ứng dụng
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products section design -->
+    <section class="products" id="products">
+        <h2 class="heading">My <span>Products</span></h2>
+
+        <div class="products-wrapper">
+            <!-- product1 -->
+            <div class="wrapper-image-video">
+                <video src="./imgAndVideo/product1.mp4" autoplay muted class="imgAndVideo"></video>
+            </div>
+
+             <!-- product2 -->
+             <div class="wrapper-image-video">
+                <video src="./imgAndVideo/product2.mp4" autoplay muted class="imgAndVideo"></video>
+            </div>
+
+             <!-- product3 -->
+             <div class="wrapper-image-video">
+                <img src="./imgAndVideo/product3.jpg" alt="ảnh sản phẩm" class="imgAndVideo">
+            </div>
+
+             <!-- product4 -->
+             <div class="wrapper-image-video">
+                <img src="./imgAndVideo/product4.jpg" alt="ảnh sản phẩm" class="imgAndVideo">
+            </div>
+        </div>
+    </section>
+
+    <!-- product-gallery-->
+    <div class="gallery">
+        <i class='bx bx-window-close close btn-hover'></i>
+
+        <div class="gallery__inner"></div>
+        
+        <div class="control prev">
+            <i class='bx bx-left-arrow-alt btn-hover' ></i>
+        </div>
+        <div class="control next">
+            <i class='bx bx-right-arrow-alt btn-hover'></i>
+        </div>
+    </div>
+
+    <!-- footer design-->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2023 by The Bao</p>
+        </div>
+
+        <div class="footer-iconTop">
+            <a href="#home"> <i class='bx bxs-chevrons-up'></i> </a>
+        </div>
+    </footer>
+  
+    <script src="./setting.js"></script>
+</body>
+</html>
