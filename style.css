@@ -746,13 +746,13 @@ rộng của màn hình nhỏ hơn hoặc bằng giá trị xác định.
 
 /* kích thước của điện thoại width thường nhỏ hơn 740px còn taplet thì nhỏ hơn 1024px */
 /* điện thoại */
-@media (max-width: 1400px){ 
+@media (max-width: 768px){ 
     html{
         font-size: 50%;
     }
     
    .header{
-    padding: 0.7rem 5%;
+    padding: 0.8rem 5%;
     background-color: var(--bg-color);
    }
 
@@ -834,7 +834,7 @@ rộng của màn hình nhỏ hơn hoặc bằng giá trị xác định.
    }
 
    .home-content h1 {
-        font-size: var(--heading1);
+        font-size: var(--heading1-mobile);
         font-weight: 700;
         line-height: 1;
     }
