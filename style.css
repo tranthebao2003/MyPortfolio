@@ -89,8 +89,12 @@ p{
     font-size: 2rem;
     color: var(--text-color-light);
     font-weight: 500;
-    margin-left: 3.5rem;
+    margin-right: 3.5rem;
     transition: all 0.3s ease-in-out;
+}
+
+.navbar a:last-child{
+    margin-right: 0;
 }
 
 /*khi hover vào thẻ a là con của class navbar or là thẻ a (con của class navbar) có class active thì sẽ áp dụng màu chữ này */
@@ -736,7 +740,21 @@ padding-right: 0.5rem;
 }
 
 /* reponsive */
-/*
+/* 
+    739px: 46.1875em
+    740px: 46.25em
+    1023px: 63.9375em
+    1024px: 64em
+
+   mobile: width < 740px
+   Tablet: width >=740px and width < 1024px
+   pc: >= 1024px
+ */
+
+  /* Trong reponsive thì sử dụng đơn vị em trong media query là chuẩn nhất
+    Và mặc định 1em = 16px
+   */
+/*  
 min-width: Được sử dụng để chỉ áp dụng CSS khi chiều rộng 
 của màn hình lớn hơn hoặc bằng giá trị xác định.
 
@@ -744,9 +762,118 @@ max-width: Được sử dụng để chỉ áp dụng CSS khi chiều
 rộng của màn hình nhỏ hơn hoặc bằng giá trị xác định. 
 */
 
-/* kích thước của điện thoại width thường nhỏ hơn 740px còn taplet thì nhỏ hơn 1024px */
-/* điện thoại */
-@media (max-width: 768px){ 
+/* moblie and tablet: width < 1024px */
+@media screen and (max-width: 63.9375em){
+    /* home */
+    .home-social{
+        position: relative;
+        margin-top: 8rem;
+        width: 60%;
+    }
+
+     /* products */
+     .products-wrapper {
+        flex-direction: column;
+        width: 50rem;
+        height: 120rem;
+    }
+
+    .wrapper-image-video {
+        height: 22%;
+        width: 80%;
+    }
+
+    .wrapper-image-video::before{
+        width:0%;
+        height: 22%;
+    }
+
+    .wrapper-image-video:hover::before{
+        width: 80%; 
+    }
+
+    /* product-gallery */
+    .gallery .gallery__inner .sizeImg{
+        /* width, height để phù hợp với tỉ lệ bức ảnh khi gallery xuất hiện */
+        width: 100%;
+        height: auto;
+    }
+    
+    .gallery .gallery__inner .sizeVideo{
+        /* width, height để phù hợp với tỉ lệ video khi gallery xuất hiện*/
+        width: 100%;
+        height: auto;
+    }
+
+    .gallery .control{
+        font-size: 7rem;
+    }
+    
+    .gallery > i{ /* chọn thẻ i là con trực tiếp của gallery */
+        font-size: 5rem;
+    }
+}
+
+/* 740px < tablet < 1024px */
+@media screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+    html{
+        font-size: 65%;
+    }
+
+    .header {
+        padding: 0.8rem 4%;
+    }
+    
+    .home{
+        flex-direction: column;
+        padding: 12rem 8%;
+    }
+
+    .home-content{
+       max-width: 100%;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+    }
+
+    .home-content p{
+        text-align: center;
+        width: 100%;
+    }
+
+    .home-content .btn-box{
+        width: 100%;
+    }
+
+    .home-image{
+        margin-left: 0;
+        margin-top: 7rem;
+    }
+
+    .close {
+        top: 0;
+        right: 0;
+        font-size: 3.5rem;
+    }
+
+    .control {
+        font-size: 5rem;
+    }
+
+    .control.next{
+        top: 90%;
+        right: 0.2rem;
+    }
+    
+    .control.prev{
+        top: 90%;
+        left: 0.2rem;
+    }
+}
+   
+
+/* điện thoại < 740px (từ 739px) */
+@media screen and (max-width: 46.1875em){ 
     html{
         font-size: 50%;
     }
@@ -925,52 +1052,25 @@ rộng của màn hình nhỏ hơn hoặc bằng giá trị xác định.
         width: 30rem;
     }
 
+    .home-social a{
+        font-size: 3rem;
+        width: 5rem;
+        height: 5rem;
+    }
+
     /* about me */
     .about-video {
-        width: calc(384px*1.03);
-        height: calc(216px*1.05);
+       width: 102%;
+       height: auto;
     }
 
     .about-video video {
-        width: 384px;
-        height: 216px;
+        width: 100%;
+        height: auto;
     }
 
     .about-content p{
         text-align: left;
-    }
-
-    /* products */
-    .products-wrapper {
-        flex-direction: column;
-        width: 50rem;
-        height: 120rem;
-    }
-
-    .wrapper-image-video {
-        height: 22%;
-        width: 80%;
-    }
-
-    .wrapper-image-video::before{
-        width:0%;
-        height: 22%;
-    }
-
-    .wrapper-image-video:hover::before{
-        width: 80%; 
-    }
-
-    .gallery .gallery__inner .sizeImg{
-        /* width, height để phù hợp với tỉ lệ bức ảnh khi gallery xuất hiện */
-        width: calc(1024px/2);
-        height: calc(820px/2);
-    }
-    
-    .gallery .gallery__inner .sizeVideo{
-        /* width, height để phù hợp với tỉ lệ video khi gallery xuất hiện*/
-        width: calc(1280px/2.6);
-        height: calc(720px/2.6);
     }
 
     .close {
