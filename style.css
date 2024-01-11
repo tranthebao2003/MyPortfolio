@@ -44,6 +44,9 @@ html{
 }
 
 body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background: var(--bg-color);
     color: var(--text-color-light);
 }
@@ -873,13 +876,20 @@ rộng của màn hình nhỏ hơn hoặc bằng giá trị xác định.
    
 
 /* điện thoại < 740px (từ 739px) */
+/* cái này mik đang reponsive cho điện thoại tỉ lệ màn hình 20/9
+16/9 sẽ bị lỗi */
 @media screen and (max-width: 46.1875em){ 
+
     html{
         font-size: 50%;
     }
+
+    /* .home, .about, .education, .products{
+        background: var(--bg-color);
+    } */
     
    .header{
-    padding: 0.8rem 5%;
+    padding: 0.8rem 4%;
     background-color: var(--bg-color);
    }
 
@@ -940,7 +950,10 @@ rộng của màn hình nhỏ hơn hoặc bằng giá trị xác định.
 
    section{ 
     /*select padding so vs nd bên trong nó*/
-        padding: 4rem 8% 1rem; /*top 4rem, left-right: 8%, bottom: 1rem */
+        /* tỉ lệ màn hình 20/9 thì nó dài hơn 16/9 nên phải là 20% */
+        width: 120%;
+        padding: 4rem 6% 1rem; /*top 4rem, left-right: 8%, bottom: 1rem */
+        margin-right: 0;
     }
 
    /* section home */
@@ -1091,5 +1104,9 @@ rộng của màn hình nhỏ hơn hoặc bằng giá trị xác định.
     .control.prev{
         top: 80%;
         left: 0.2rem;
+    }
+
+    .footer{
+        width: 120%;
     }
 }
