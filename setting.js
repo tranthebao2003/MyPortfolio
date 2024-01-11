@@ -152,7 +152,7 @@ navLinks.forEach(function(item){
 
 // sẽ bắt sự kiện scroll của user sau đó lấy object header gán vào biến header và sử dụng classList.toggle
 // toggle ('className', condition), trong trường hợp này thì khi window.scrollY > 70 (khi cuộn cửa sộ theo chiều dọc > 70px thì 
-// thỏa điều kiện
+// thỏa điều kiện nó sẽ thêm class sticky còn khi sai thì nó sẽ xóa class đó đi
 window.addEventListener('scroll', function(){
     // sticky header
     var header = document.querySelector('header')
